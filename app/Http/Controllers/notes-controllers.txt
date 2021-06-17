@@ -1,0 +1,32 @@
+no cmd do projeto:
+
+(para cruds)
+php artisan make:controller AlunoController --resource
+
+criar models:
+php artisan make:model AlunoModel -m
+
+use Carbon\Carbon; // <-- API de datas
+
+usando a API CARBON para datas
+ public function create()
+    {
+        //Criar uma instância de Carbon e formatar para o padrão do input date
+        $dateCad=Carbon::now()->format('Y-m-d');
+        //return view('createAluno');
+        return view('createAluno', compact('dateCad'));
+    }
+
+
+    comando para criar uma classe de requisição (request) para interceptar essas requesições dos formulários
+    php artisan make:request AlunoRequest
+
+    para migrar models para o banco
+    php artisan migrate
+
+
+criando seeder: (na pasta database/seeders)
+php artisan make:seeder alunoSeeder
+
+esse comando faz com que os registros que estão no código alunoSeeder.php vá para o banco
+php artisan db:seed
